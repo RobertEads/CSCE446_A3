@@ -1,3 +1,5 @@
+//#define debug
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,6 @@ public class PlayerManagement : MonoBehaviour
 {
     private PlayerPathTracker playerPathTracker_script;
 
-    // Start is called before the first frame update
     void Start()
     {
         GameObject playerPathTracker_object = GameObject.Find("pathTracker_player");
@@ -20,6 +21,12 @@ public class PlayerManagement : MonoBehaviour
         
     }
 
-    public void enqueueMazeIdToPath(int mazeUnit_id_) { Debug.Log("Reached player, calling path managaer"); playerPathTracker_script.enqueue_mazeId(mazeUnit_id_); }
+    public void enqueueMazeIdToPath(int mazeUnit_id_) 
+    {
+        #if debug
+            Debug.Log("Reached player, calling path managaer"); 
+        #endif
+        playerPathTracker_script.enqueue_mazeId(mazeUnit_id_); 
+    }
 
 }

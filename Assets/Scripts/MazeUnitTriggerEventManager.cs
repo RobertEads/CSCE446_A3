@@ -1,28 +1,36 @@
+//#define debug
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class MazeUnitTriggerEventManager : MonoBehaviour
 {
-    //Put some sort of identifer in here that the player and chaser with retreive when they interact with the box 
-    [SerializeField] private int myUnitId;
+    private int myNodeId;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        string[] parts = gameObject.name.Split('_');
+        myNodeId = int.Parse(parts.Last());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
+        #if debug
+            Debug.Log("Collision Detected");  
+        #endif
+       
+        if (collision.gameObject.tag == "Player") 
+        {
+            #if debug
+                Debug.Log("Collided with player, calling player to enqueueing my id");  
+            #endif
+            collision.gameObject.GetComponent<PlayerManagement>().enqueueMazeIdToPath(myNodeId); 
+        }
         
-    }
-
-    public void childDetectedCollision(Collider other)
-    {
-        Debug.Log("Collision in parent, passing on to player"); other.gameObject.GetComponent<PlayerManagement>().enqueueMazeIdToPath(myUnitId);
     }
 }
