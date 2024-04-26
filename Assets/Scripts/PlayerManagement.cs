@@ -21,12 +21,13 @@ public class PlayerManagement : MonoBehaviour
         
     }
 
-    public void enqueueMazeIdToPath(int mazeUnit_id_) 
+    public void enqueueMazeIdToPath(int mazeUnit_id) 
     {
         #if debug
             Debug.Log("Reached player, calling path managaer"); 
         #endif
-        playerPathTracker_script.enqueue_mazeId(mazeUnit_id_); 
+        playerPathTracker_script.enqueue_mazeId(mazeUnit_id); 
+
     }
 
 }

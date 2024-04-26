@@ -1,12 +1,7 @@
 //#define debug
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 
 public class MazeUnitTriggerEventManager : MonoBehaviour
 {
@@ -26,10 +21,15 @@ public class MazeUnitTriggerEventManager : MonoBehaviour
        
         if (collision.gameObject.tag == "Player") 
         {
-            #if debug
+#if debug
                 Debug.Log("Collided with player, calling player to enqueueing my id");  
-            #endif
+#endif
             collision.gameObject.GetComponent<PlayerManagement>().enqueueMazeIdToPath(myNodeId); 
+
+        }
+        if(collision.gameObject.tag == "Chaser")
+        {
+            collision.gameObject.GetComponent<ChaserMovementManager>().updateChaserPosition(myNodeId);
         }
         
     }
