@@ -12,6 +12,7 @@ public class PlayerManagement : MonoBehaviour
     {
         GameObject playerPathTracker_object = GameObject.Find("pathTracker_player");
         playerPathTracker_script = playerPathTracker_object.GetComponent<PlayerPathTracker>();
+
     }
 
 
