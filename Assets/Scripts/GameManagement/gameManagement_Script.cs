@@ -15,6 +15,12 @@ public enum POWERUPTYPE
     EXIT
 }
 
+public enum CHASETYPE
+{
+    BASIC,
+    ADVANCED
+}
+
 public class gameManagement_Script : MonoBehaviour
 {
     private bool exitBeaconTokenCollected = false;
