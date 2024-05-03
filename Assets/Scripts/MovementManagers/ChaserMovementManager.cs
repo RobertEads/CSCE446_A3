@@ -43,7 +43,6 @@ public class ChaserMovementManager : MonoBehaviour
             {
                 isMoving = false;
                 childAvatarAnimator.SetBool("isRunning", false);
-               
                 switch (playerPathTracker_script.get_chaseDifficulty()) {
                     case CHASETYPE.ADVANCED:
                     {
@@ -85,6 +84,7 @@ public class ChaserMovementManager : MonoBehaviour
         int gridX = nextSquareId / 25;
         int gridZ = nextSquareId % 25;
         newPosition = MazeTrackingAnchor.transform.position + new Vector3(xDirectionFactor * gridSizeConstant * gridX, 0f, zDirectionFactor * gridSizeConstant * gridZ);
+        childAvatarAnimator.SetBool("isRunning", true);
         isMoving = true;
     }
 
