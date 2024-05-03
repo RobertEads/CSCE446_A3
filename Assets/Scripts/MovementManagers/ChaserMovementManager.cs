@@ -10,6 +10,7 @@ public class ChaserMovementManager : MonoBehaviour
     private Vector3 newPosition = Vector3.zero;
     private PlayerPathTracker playerPathTracker_script;
     private GameObject MazeTrackingAnchor;
+    private Animator childAvatarAnimator;
 
     [SerializeField] private float movementSpeed = 2.5f;
     [SerializeField] private bool reverseFozwardX = false;
@@ -21,6 +22,8 @@ public class ChaserMovementManager : MonoBehaviour
         GameObject playerPathTracker_object = GameObject.Find("pathTracker_player");
         playerPathTracker_script = playerPathTracker_object.GetComponent<PlayerPathTracker>();
         MazeTrackingAnchor = GameObject.Find("MazeTrackingAnchor");
+
+        childAvatarAnimator = transform.GetChild(0).GetComponent<Animator>();
 
         if (reverseFozwardX) { xDirectionFactor = -1; }
         if (reverseForwardZ) { zDirectionFactor = -1; }
@@ -37,6 +40,7 @@ public class ChaserMovementManager : MonoBehaviour
             if (isEqual(transform.position.x, newPosition.x) && isEqual(transform.position.z, newPosition.z))
             {
                 isMoving = false;
+                childAvatarAnimator.SetBool("isRunning", false);
                 if (!playerPathTracker_script.isPathEmpty()) { startChasing(); }
             }
         }
@@ -48,6 +52,7 @@ public class ChaserMovementManager : MonoBehaviour
         int gridX = nextSquareId / 25;
         int gridZ = nextSquareId % 25;
         newPosition = MazeTrackingAnchor.transform.position + new Vector3(xDirectionFactor * gridSizeConstant * gridX, 0f, zDirectionFactor * gridSizeConstant * gridZ);
+        childAvatarAnimator.SetBool("isRunning", true);
         isMoving = true;
     }
 
