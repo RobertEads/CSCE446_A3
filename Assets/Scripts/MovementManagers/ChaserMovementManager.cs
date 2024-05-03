@@ -28,7 +28,9 @@ public class ChaserMovementManager : MonoBehaviour
         if (reverseFozwardX) { xDirectionFactor = -1; }
         if (reverseForwardZ) { zDirectionFactor = -1; }
 
-        Invoke("startChasing", 3f);
+        if (playerPathTracker_script.get_chaseDifficulty() == CHASETYPE.ADVANCED) { Invoke("startAdvancedChasing", 3f); }
+        else { Invoke("startBasicChasing", 3f); }
+        
     }
 
     void Update()
@@ -41,18 +43,48 @@ public class ChaserMovementManager : MonoBehaviour
             {
                 isMoving = false;
                 childAvatarAnimator.SetBool("isRunning", false);
-                if (!playerPathTracker_script.isPathEmpty()) { startChasing(); }
+               
+                switch (playerPathTracker_script.get_chaseDifficulty()) {
+                    case CHASETYPE.ADVANCED:
+                    {
+                        if (!playerPathTracker_script.isChaserPathEmpty()) { moveNextStepAdvancedChasing(); }
+                        else { startAdvancedChasing(); }
+                        break;
+                    }
+
+                    case CHASETYPE.BASIC:
+                    {
+                        if (!playerPathTracker_script.isPlayerPathEmpty()) { startBasicChasing(); }
+                        break;
+                    }
+                }
             }
         }
     }
 
-    private void startChasing()
+    private void startBasicChasing()
     {
         int nextSquareId = (int) playerPathTracker_script.dequeue_mazeId();
         int gridX = nextSquareId / 25;
         int gridZ = nextSquareId % 25;
         newPosition = MazeTrackingAnchor.transform.position + new Vector3(xDirectionFactor * gridSizeConstant * gridX, 0f, zDirectionFactor * gridSizeConstant * gridZ);
         childAvatarAnimator.SetBool("isRunning", true);
+        isMoving = true;
+    }
+    
+    private void startAdvancedChasing()
+    {
+        playerPathTracker_script.dijkstra();
+        playerPathTracker_script.formatPath();
+        moveNextStepAdvancedChasing();
+    }
+
+    private void moveNextStepAdvancedChasing()
+    {
+        int nextSquareId = playerPathTracker_script.pop_nextMazeId();
+        int gridX = nextSquareId / 25;
+        int gridZ = nextSquareId % 25;
+        newPosition = MazeTrackingAnchor.transform.position + new Vector3(xDirectionFactor * gridSizeConstant * gridX, 0f, zDirectionFactor * gridSizeConstant * gridZ);
         isMoving = true;
     }
 
