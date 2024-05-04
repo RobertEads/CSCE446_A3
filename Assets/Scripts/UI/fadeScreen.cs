@@ -13,10 +13,14 @@ public class fadeScreen : MonoBehaviour
     private Canvas winnerCanvas;
     private Canvas loserCanvas;
 
+    private void Awake()
+    {
+        rend = GetComponent<Renderer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponent<Renderer>();
         if (fadeOnStart)
         {
             FadeIn();
@@ -26,7 +30,7 @@ public class fadeScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void FadeIn()
@@ -47,10 +51,10 @@ public class fadeScreen : MonoBehaviour
     public IEnumerator FadeRoutine(float alphaIn, float alphaOut, bool reload)
     {
         float timer = 0;
-        while(timer <= fadeDuration)
+        while (timer <= fadeDuration)
         {
             Color newColor = fadeColor;
-            newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer/fadeDuration);
+            newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
 
             rend.material.SetColor("_Color", newColor);
 

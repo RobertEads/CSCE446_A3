@@ -4,9 +4,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerPathTracker : MonoBehaviour
 {
+    //public XRController rController;
+
     private int chaserPosition = -1;
     private int playerPosition = -2; 
 
@@ -21,6 +25,15 @@ public class PlayerPathTracker : MonoBehaviour
 
     [SerializeField] private CHASETYPE chaseDifficulty;
 
+
+    //private void OnEnable()
+    //{
+    //    rController.inputDevice.TryReadSingleValue(InputHelpers.Button.Primary2DAxisClick, out float isThumbstickPressed);
+    //    if (isThumbstickPressed > 0.0f)
+    //    {
+    //        change_Difficulty();
+    //    }
+    //}
 
     void Start()
     {
@@ -60,7 +73,8 @@ public class PlayerPathTracker : MonoBehaviour
     }
 
     public CHASETYPE get_chaseDifficulty() { return chaseDifficulty; }
-    
+    public void set_chaseDifficulty(CHASETYPE newVal) {  chaseDifficulty = newVal; }
+
     public int pop_nextMazeId() { return chaserPathway.Pop(); }
 
     public void enqueue_mazeId(int id) 

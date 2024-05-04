@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     {
         if (monsterTimer.isCompleted())
         {
-            Debug.Log("Spawn the monster now."); //TO-DO: Call for spawn enemy/monster
+            Debug.Log("Spawn the monster now.");
         }
 
         if (gameManagementScript.get_exitBeaconTokenCollected())
