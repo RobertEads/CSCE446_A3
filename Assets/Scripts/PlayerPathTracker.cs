@@ -73,7 +73,8 @@ public class PlayerPathTracker : MonoBehaviour
     }
 
     public CHASETYPE get_chaseDifficulty() { return chaseDifficulty; }
-    
+    public void set_chaseDifficulty(CHASETYPE newVal) {  chaseDifficulty = newVal; }
+
     public int pop_nextMazeId() { return chaserPathway.Pop(); }
 
     public void enqueue_mazeId(int id) 
