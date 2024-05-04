@@ -46,6 +46,19 @@ public class PlayerPathTracker : MonoBehaviour
         }
     }
 
+    public void change_Difficulty()
+    {
+        if(chaseDifficulty == CHASETYPE.ADVANCED)
+        {
+            chaseDifficulty = CHASETYPE.BASIC;
+        }
+
+        if(chaseDifficulty == CHASETYPE.BASIC)
+        {
+            chaseDifficulty = CHASETYPE.ADVANCED;
+        }
+    }
+
     public CHASETYPE get_chaseDifficulty() { return chaseDifficulty; }
     
     public int pop_nextMazeId() { return chaserPathway.Pop(); }

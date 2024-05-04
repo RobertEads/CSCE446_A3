@@ -12,10 +12,14 @@ public class UIManager : MonoBehaviour
     public fadeScreen faderWhite;
     public fadeScreen faderRed;
 
+    private gameManagement_Script gameManagementScript;
+
     // Start is called before the first frame update
     void Start()
     {
         StartGame();
+        GameObject gameManagerObject = GameObject.Find("gameManager");
+        gameManagementScript = gameManagerObject.GetComponent<gameManagement_Script>();
     }
 
     // Update is called once per frame
@@ -25,11 +29,26 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("Spawn the monster now."); //TO-DO: Call for spawn enemy/monster
         }
+
+        if (gameManagementScript.get_exitBeaconTokenCollected())
+        {
+            StartExitBeaconTimer(10);
+        }
+
+        if (gameManagementScript.get_speedTokenCollected())
+        {
+            StartSpeedBoostTimer(10);
+        }
+
+        if (gameManagementScript.get_enemyBeaconTokenCollected())
+        {
+            StartEnemyBeaconTimer(10);
+        }
     }
 
     public void StartGame()
     {
-        monsterTimer.StartTimer(30);
+        monsterTimer.StartTimer(15);
     }
 
     public void StartExitBeaconTimer(int duration)
