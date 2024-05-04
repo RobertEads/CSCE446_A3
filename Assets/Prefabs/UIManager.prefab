@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6278517869297797839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3833511833344259172}
+  - component: {fileID: 5003663466199107962}
+  - component: {fileID: 6452752007133611522}
+  - component: {fileID: 7636211242609111030}
+  - component: {fileID: 1009392200483831887}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3833511833344259172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278517869297797839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.18675955, y: 2.1224031, z: 2.0585074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5003663466199107962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278517869297797839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c9ed4fac722b342a44963a07efba22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 15
+  preText: 
+  timerText: {fileID: 0}
+  fill: {fileID: 0}
+--- !u!114 &6452752007133611522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278517869297797839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c9ed4fac722b342a44963a07efba22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 10
+  preText: 
+  timerText: {fileID: 0}
+  fill: {fileID: 0}
+--- !u!114 &7636211242609111030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278517869297797839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c9ed4fac722b342a44963a07efba22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 15
+  preText: 
+  timerText: {fileID: 0}
+  fill: {fileID: 0}
+--- !u!114 &1009392200483831887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278517869297797839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71cb0717061cbd141b92b3f7fa653cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterTimer: {fileID: 0}
+  exitBeaconTimer: {fileID: 5003663466199107962}
+  speedBoostTimer: {fileID: 6452752007133611522}
+  enemyBeaconTimer: {fileID: 7636211242609111030}
+  faderWhite: {fileID: 0}
+  faderRed: {fileID: 0}
