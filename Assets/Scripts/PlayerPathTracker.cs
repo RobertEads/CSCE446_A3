@@ -34,8 +34,16 @@ public class PlayerPathTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (chaserPosition == playerPosition) { Debug.Log("Player loses"); } //TODO: Lose function call happens here
-        if (playerPosition == 286) { Debug.Log("Player win");  } //TODO: Win function call happens here
+        if (chaserPosition == playerPosition) {
+            Debug.Log("Player loses");
+            UIManager uiManager = FindObjectOfType<UIManager>();
+            uiManager.FadeOnLose();
+        }
+        if (playerPosition == 286) {
+            Debug.Log("Player wins");
+            UIManager uiManager = FindObjectOfType<UIManager>();
+            uiManager.FadeOnWin();
+        }
     }
 
     public CHASETYPE get_chaseDifficulty() { return chaseDifficulty; }
