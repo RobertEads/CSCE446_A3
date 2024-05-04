@@ -11,7 +11,8 @@ public class playerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        childAvatarAnimator = transform.GetChild(0).GetComponent<Animator>();
+        //childAvatarAnimator = transform.GetChild(0).GetComponent<Animator>();
+        childAvatarAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

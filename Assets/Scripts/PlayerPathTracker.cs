@@ -24,6 +24,7 @@ public class PlayerPathTracker : MonoBehaviour
 
     void Start()
     {
+        chaserPosition = 0;
         graph = new List<List<AdjListNode>>();
         chaserPathway = new Stack<int>();
         generateGraph();
